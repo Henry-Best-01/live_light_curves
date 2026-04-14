@@ -1,1 +1,10 @@
 numpy
+starred-astro
+lightcurver
+astropy
+scipy
+pyvo
+lsst-daf-butler
+lsst-sphgeom
+
+

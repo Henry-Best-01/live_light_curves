@@ -1,0 +1,22 @@
+[build-system]
+requires = ['setuptools>=67.6.1', 'wheel']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'live_light_curves'
+version = '0.1.0'
+authors = [{name='Henry Best', email='h.best99999@gmail.com'}]
+description = 'Pipeline designed to query and monitor specific systems of lensed AGN'
+readme = 'README.md'
+dependencies = [
+    'numpy',
+    'astropy',
+    'lightcurver',
+    'scipy',
+    'h5py',
+    'photutils',
+]
+
+[tool.setuptools]
+packages.find = {where=['src'], include=['livelcs', 'livelcs*']}
+package-dir = {'' = '.'}

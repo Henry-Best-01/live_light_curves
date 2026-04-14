@@ -1,16 +1,91 @@
 '''main file for pipeline'''
 
-from live_light_curves.Util.util import {
-
-}
+import sys
+from livelcs.Util.util import (
+    parse_arguments,
+    open_tap_service,
+    prepare_butler
+)
+from astropy.time import Time
+import time
 #import Lightcurver
 #import Starred
 #import PYCS
+#import pyvo
+#import os
+#import subprocess
+#import argparse
+import sys
 #import CCE/HME detection
+import numpy as np
+
+import lsst.sphgeom as sphgeom
 
 
+
+#print(sphgeom.Region.from_ivoa_pos("CIRCLE 53.076 -28.110 2.0"))
+
+
+
+### read in file of coordinates
+# the targets parameter holds a dictionary of all objects in the provided file
+if len(sys.argv) == 0:
+    print("please provide a file holding a list of objects when calling this script")
+all_arguments = sys.argv[1:]
+targets, other_args = parse_arguments(all_arguments)
+
+
+
+### open up a tap service
+# requires token to be stored on the machine
+
+rsp_tap = open_tap_service()
+
+
+query = "SELECT * FROM tap_schema.schemas"
+results = rsp_tap.run_sync(query)
+results.to_table()
+print(results)
+
+exit()
+
+
+schema='dp1'
+
+### make an LSST butler to get image data
+band = 'r'
+ra = 44
+dec = -2
+query = f"band.name = '{band}' AND visit_detector_region.region OVERLAPS POINT ({ra}, {dec})"
+
+
+from lsst.daf.butler import Butler
+butler = Butler(
+    "dp02-remote",
+)
+
+
+exit()
+
+
+butler = prepare_butler()
+butler.get_dataset_type('visit_image')
+exit()
 
 ### query given coordinates
+
+# we now have the coordinates for object [ii] defined as
+# (targets[ii]['ra'], targets[ii]['dec'])
+
+
+
+query = "SELECT TOP 25 * FROM "+schema+".Object"
+
+results = rsp_tap.run_sync(query)
+output = results.to_table()
+
+print(output)
+
 
 # import sources from live_light_curves.source_list using some json interface
 # for each observation:
