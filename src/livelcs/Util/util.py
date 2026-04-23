@@ -157,6 +157,13 @@ def query_coords(
             print("no visit images found matching given times and coordinates")
 
     return output_cutouts
+
+
+def prepare_configuration_file():
+    # Lightcurver requires a valid config file to work. This function writes
+    # the coordinates of lenses to the config file.
+
+    
         
 
 def processed_stellar_cutouts():
