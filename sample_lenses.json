@@ -1,0 +1,64 @@
+[
+    {
+        "ra": "2.834350",
+        "dec": "-8.764070",
+        "name": "J0011-0845",
+        "score": null,
+        "image_sep": "1.9200",
+        "n_img": 2,
+        "redshift": [
+            {
+                "value": "0.7260",
+                "dvalue_min": null,
+                "dvalue_max": null,
+                "tag": "LENS",
+                "method": "PHOTO",
+                "info": null
+            },
+            {
+                "value": "1.7000",
+                "dvalue_min": null,
+                "dvalue_max": null,
+                "tag": "SOURCE",
+                "method": "SPECTRO",
+                "info": null
+            }
+        ]
+    },
+    {
+        "ra": "3.348080",
+        "dec": "51.318220",
+        "name": "J0013+5119",
+        "score": null,
+        "image_sep": "2.9250",
+        "n_img": 2,
+        "redshift": [
+            {
+                "value": "2.6300",
+                "dvalue_min": null,
+                "dvalue_max": null,
+                "tag": "SOURCE",
+                "method": "SPECTRO",
+                "info": null
+            }
+        ]
+    },
+    {
+        "ra": "3.933000",
+        "dec": "-25.438200",
+        "name": "J0015-2526",
+        "score": null,
+        "image_sep": "0.3700",
+        "n_img": 2,
+        "redshift": [
+            {
+                "value": "0.9690",
+                "dvalue_min": null,
+                "dvalue_max": null,
+                "tag": "SOURCE",
+                "method": "SPECTRO",
+                "info": null
+            }
+        ]
+    },
+]
