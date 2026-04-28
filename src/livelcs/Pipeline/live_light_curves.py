@@ -4,7 +4,8 @@ import sys
 from livelcs.Util.util import (
     parse_arguments,
     open_tap_service,
-    prepare_butler
+    prepare_butler,
+    query_coords
 )
 from astropy.time import Time as astro_time
 import astropy.units as u
@@ -67,12 +68,20 @@ butler = prepare_butler(butler_config, butler_collections)
 
 
 # this produces a list of visit images
+
+
+ra = targets[0]['ra']
+dec = targets[0]['dec']
 lsst_bands = list('ugrizy')
+
+time_start = 40587
+time_stop = astro_time.now()
+cutout_size = 500
 
 all_data = []
 for band in lsst_bands:
         
-    current_data = query_coordinates(
+    current_data = query_coords(
         butler,
         band,
         ra,
@@ -86,6 +95,7 @@ for band in lsst_bands:
     all_data.append(current_data)
     
 
+print(len(all_data))
 
 
 

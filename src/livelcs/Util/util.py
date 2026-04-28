@@ -43,7 +43,7 @@ def open_tap_service(
     home_directory='~',
     rsp_tap_token_filename='.rsp-tap.token',
 ):
-    '''opens the RSP TAP service'''
+    '''opens the RSP TAP service. REDUNDANT?'''
     import pyvo
     import os 
     RSP_TAP_SERVICE = 'https://data.lsst.cloud/api/tap'
@@ -64,9 +64,10 @@ def prepare_butler(
 ):
     '''prepare the lsst Butler required to get image data'''
     from lsst.daf.butler import Butler
-
-    ### works on lsst cloud
-    butler = Butler(configuration, collections=collections)
+    try:
+        butler = Butler(configuration, collections=collections)
+    except:
+        print("Error generating your butler. Please try adding your ACCESS_TOKEN to your environment")
     assert butler is not None
     return butler
 
