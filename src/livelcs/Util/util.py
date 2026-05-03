@@ -4,7 +4,7 @@
 
 def parse_arguments(all_arguments=None):
     '''this function takes the list of arguments provided and generates a
-    dictionaryfrom them if possible'''
+    dictionary from them if possible'''
 
     if all_arguments == []:
         return None, []
@@ -37,6 +37,31 @@ def parse_arguments(all_arguments=None):
         print("these can be generated using the 'SLED_lenses.py' script provided")
         return list_of_targets, all_arguments
     return current_targets, other_args
+
+def find_lsst_config(lsst_config_path=None):
+    '''tests a few likely paths for the LSST configuration file'''
+    if path.isfile(lsst_config_path):
+        return lsst_config_path
+    test_path = path.expanduser(
+            "~/live_light_curves/config_LSST.yaml"
+        )
+    if path.isfile(test_path):
+        config_path = test_path
+    else:
+        test_paths = [
+            "./config_LSST.yaml",
+            "../config_LSST.yaml",
+            "../../config_LSST.yaml",
+            "../../../config_LSST.yaml",
+        ]
+        for test_path in test_paths:
+            if path.isfile(test_path):
+                config_path = path.abspath(test_path)
+                break
+    if config_path:
+        return config_path
+    else:
+        print("Error finding LSST configuration file. Please call 
 
 
 def open_tap_service(
@@ -160,11 +185,6 @@ def query_coords(
     return output_cutouts
 
 
-def prepare_configuration_file():
-    # Lightcurver requires a valid config file to work. This function writes
-    # the coordinates of lenses to the config file.
-
-    pass
         
 
 def processed_stellar_cutouts():

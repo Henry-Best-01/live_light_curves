@@ -2,6 +2,7 @@
 
 import sys
 from livelcs.Util.util import (
+    find_lsst_config,
     parse_arguments,
     open_tap_service,
     prepare_butler,
@@ -13,7 +14,12 @@ from lsst.daf.butler import (
     Timespan,
     Butler
 )
-#import Lightcurver
+from lightcurver.structure.user_config import get_user_config
+from lightcurver.processes.star_querying import query_gaia_stars
+from lightcurver.processes.cutout_making import extract_all_stamps
+from lightcurver.processes.psf_modelling import model_all_psfs
+from lightcurver.processes.normalization_calculation import calculate_coefficient
+from lightcurver.processes.star_photometry import do_star_photometry
 #import Starred
 #import PYCS
 #import pyvo
@@ -25,9 +31,19 @@ import sys
 import numpy as np
 
 import lsst.sphgeom as sphgeom
-import lsst.geom as geom
+#import lsst.geom as geom
+
+# We need access to the environmental variables because that's where the lightcurver config is stored
+from os import environ
+from os import path
 
 
+# Include a string of the file path to the config_LSST file if not automatically detected.
+# Note that it must be named "config_LSST.yaml"
+known_config_path = None 
+config_path = find_lsst_config(known_config_path)
+environ['LIGHTCURVER_CONFIG'] = config_path
+get_user_config()
 
 
 
@@ -41,6 +57,7 @@ targets, other_args = parse_arguments(all_arguments)
 
 
 
+
 ### open up a tap service
 # requires token to be stored on the machine
 
@@ -49,7 +66,7 @@ rsp_tap = open_tap_service()
 
 
 
-### set up the butler
+### set up the butler, store your RSP token as envirionment variable "ACCESS_TOKEN" 
 butler_config = "dp1"
 butler_collections = "LSSTComCam/DP1"
 
@@ -63,7 +80,6 @@ butler = prepare_butler(butler_config, butler_collections)
 
 
 
-
 ## wrap this in a loop per object in monitoring list
 
 
@@ -74,7 +90,7 @@ ra = targets[0]['ra']
 dec = targets[0]['dec']
 lsst_bands = list('ugrizy')
 
-time_start = 40587
+time_start = 60587 #40587
 time_stop = astro_time.now()
 cutout_size = 500
 
@@ -96,7 +112,7 @@ for band in lsst_bands:
     
 
 print(len(all_data))
-
+exit()
 
 
 # import sources from live_light_curves.source_list using some json interface
