@@ -114,7 +114,6 @@ def query_coords(
     from astropy.time import Time as astro_time
     from astropy.io import fits
     from lsst.daf.butler import Timespan
-    import os
     from os import path
     import lsst.geom as geom
     import astropy.units as u
@@ -183,13 +182,13 @@ def query_coords(
             visit_id = reference.dataId.get('visit')
 
             print(raw_dir+"/LSST"+str(visit_id)+".fits")
-            print(os.isfile(raw_dir+"/LSST"+str(visit_id)+".fits"))
+            print(path.isfile(raw_dir+"/LSST"+str(visit_id)+".fits"))
 
             if verbose:
                 print(f"current id = {visit_id}")
 
             # only query if it's not in your raw directory
-            if not os.isfile(raw_dir+"/LSST"+str(visit_id)+".fits"):
+            if not path.isfile(raw_dir+"/LSST"+str(visit_id)+".fits"):
                 file_to_write = raw_dir+"/LSST"+str(visit_id)+".fits"
 
                 visit_image = butler.get(reference)
