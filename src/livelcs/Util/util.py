@@ -126,7 +126,7 @@ def query_coords(
     # this is the time window to query in
     timespan = Timespan(time_start, time_stop)
 
-    assert type(bands) is str
+    assert type(band) is str
 
     if band not in list("ugrizy"):
         print("only lsst bands of 'u', 'g', 'r', 'i', 'z', 'y' are accepted now")
