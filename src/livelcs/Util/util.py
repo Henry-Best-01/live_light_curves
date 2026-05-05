@@ -181,9 +181,7 @@ def query_coords(
 
             if verbose:
                 print(f"got a visit image at coordinates ra:{float(ra)}, dec:{float(dec)}")
-
-            print(visit_image)
-
+                print(float(ra) * u.deg, float(dec) * u.deg)
             # this check needs astropy units
             if visit_image.containsSkyCoords(
                 float(ra) * u.deg,
