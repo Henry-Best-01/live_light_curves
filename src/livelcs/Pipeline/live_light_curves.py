@@ -8,7 +8,7 @@ from livelcs.Util.util import (
     prepare_butler,
     query_coords
 )
-from astropy.time import Time as astro_time
+#from astropy.time import Time as astro_time
 import astropy.units as u
 from lsst.daf.butler import (
     Timespan,
