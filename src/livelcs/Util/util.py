@@ -174,8 +174,8 @@ def query_coords(
 
             # this check needs astropy units
             if visit_image.containsSkyCoords(
-                ra * u.deg,
-                dec * u.deg,
+                float(ra) * u.deg,
+                float(dec) * u.deg,
             ):
                 this_image = visit_image.getCutout(
                     center = point,

@@ -95,7 +95,7 @@ for jj in range(len(targets)):
     dec = targets[jj]['dec']
     lsst_bands = list('ugrizy')
 
-    time_start = 40587
+    time_start = 60500 #40587
     time_stop = None
     cutout_size = 500
 
@@ -117,7 +117,7 @@ for jj in range(len(targets)):
     all_data.append(current_position)
     
 for item in all_data:
-    print(item)
+    print(len(item))
 exit()
 
 
