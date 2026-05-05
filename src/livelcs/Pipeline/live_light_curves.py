@@ -86,29 +86,35 @@ butler = prepare_butler(butler_config, butler_collections)
 # this produces a list of visit images
 
 print(targets)
-ra = targets[0]['ra']
-dec = targets[0]['dec']
-lsst_bands = list('ugrizy')
-
-time_start = 40587
-time_stop = None
-cutout_size = 500
 
 all_data = []
-for band in lsst_bands:
-        
-    current_data = query_coords(
-        butler,
-        band,
-        ra,
-        dec,
-        time_start=time_start,
-        time_stop=time_stop,
-        cutout_size=cutout_size,
-        verbose=False
-    )
 
-    all_data.append(current_data)
+for jj in range(4):
+
+    ra = targets[jj]['ra']
+    dec = targets[jj]['dec']
+    lsst_bands = list('ugrizy')
+
+    time_start = 40587
+    time_stop = None
+    cutout_size = 500
+
+    current_position = []
+    for band in lsst_bands:
+            
+        current_data = query_coords(
+            butler,
+            band,
+            ra,
+            dec,
+            time_start=time_start,
+            time_stop=time_stop,
+            cutout_size=cutout_size,
+            verbose=False
+        )
+
+        current_position.append(current_data)
+    all_data.append(current_position)
     
 for item in all_data:
     print(item)
