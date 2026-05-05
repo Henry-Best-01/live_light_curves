@@ -202,6 +202,25 @@ def query_coords(
     return output_cutouts
 
 
+def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
+    """Lightcurver requires a configuration file with the region of interest
+    input as the parameter ROI for each object"""
+
+    
+    new_lines = []
+    with open(original_path, 'r') as file:
+        lines = file.read()
+
+        for line in lines:
+            print(line)
+            if line == 'ROI:\n':
+                print("\n\nfound it!\n\n")
+                
+            
+        
+
+    
+
         
 
 def processed_stellar_cutouts():

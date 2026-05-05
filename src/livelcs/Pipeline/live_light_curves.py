@@ -6,7 +6,8 @@ from livelcs.Util.util import (
     parse_arguments,
     open_tap_service,
     prepare_butler,
-    query_coords
+    query_coords,
+    make_temp_yaml_with_new_roi
 )
 #from astropy.time import Time as astro_time
 import astropy.units as u
@@ -54,6 +55,14 @@ if len(sys.argv) == 0:
     print("please provide a file holding a list of objects when calling this script")
 all_arguments = sys.argv[1:]
 targets, other_args = parse_arguments(all_arguments)
+
+
+### make temporary configuration file to place ROI at current objects
+
+make_temp_yaml_with_new_roi(targets, known_config_path)
+
+
+exit()
 
 
 
@@ -117,7 +126,6 @@ for jj in range(len(targets)):
     all_data.append(current_position)
     
 for item in all_data:
-    print(len(item))
     print(item)
 exit()
 
