@@ -210,6 +210,7 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
     new_lines = []
     with open(original_path, 'r') as file:
         lines = file.read()
+        print(lines)
 
         for line in lines:
             print(line)
