@@ -32,7 +32,7 @@ def parse_arguments(all_arguments=None):
             my_reader = csv.DictReader(f)
             
             for row in my_reader:
-                print(row['ra'], row['dec'])
+                print(row)
                 current_targets.append(row)
     else:
         print("list of objects not recognized. please provide a valid json or csv.")
