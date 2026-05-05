@@ -95,7 +95,7 @@ for jj in range(len(targets)):
     dec = targets[jj]['dec']
     lsst_bands = ['z'] #list('ugrizy')
 
-    time_start = 60500 #40587
+    time_start = None #40587
     time_stop = None
     cutout_size = 500
 
