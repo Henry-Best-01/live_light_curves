@@ -115,6 +115,7 @@ def query_coords(
     from astropy.io import fits
     from lsst.daf.butler import Timespan
     import os
+    from os import path
     import lsst.geom as geom
     import astropy.units as u
     if time_stop is None:
@@ -132,6 +133,7 @@ def query_coords(
     timespan = Timespan(time_start, time_stop)
 
     assert type(band) is str
+    raw_dir = path.abspath(raw_dir)
 
     # typecast values read from json or csv 
     if type(ra) is str: ra = float(ra)
