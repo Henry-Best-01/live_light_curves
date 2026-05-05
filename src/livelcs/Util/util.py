@@ -200,18 +200,15 @@ def query_coords(
                     this_image = visit_image.getCutout(
                         center = center_point,
                         size = extent
-                    ).image.array
+                    )
 
-                    my_hdu = fits.PrimaryHDU(data=this_image)
-                    print("gets to flag 1")
+                    my_hdu = fits.PrimaryHDU(
+                        data=np.asarray(this_image.image.array)
+                    )
                     my_hdu.header['ra'] = ra
-                    print("gets to flag 2")
                     my_hdu.header['dec'] = dec
-                    print("gets to flag 3")
                     my_hdu.header['band'] = band
-                    print("gets to flag 4")
                     my_hdu.header['obs_time'] = this_image.getMetadata()["DATE"]
-                    print("gets to flag 5")
                     my_hdu.writeto(file_to_write)
                     
                     output_cutouts.append(this_image)
