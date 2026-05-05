@@ -60,7 +60,7 @@ targets, other_args = parse_arguments(all_arguments)
 
 
 ### make temporary configuration file to place ROI at current objects
-this_config_file = make_temp_yaml_with_new_roi(targets, config_path)
+this_config_file, raw_dir = make_temp_yaml_with_new_roi(targets, config_path)
 environ['LIGHTCURVER_CONFIG'] = this_config_file
 
 
@@ -96,6 +96,7 @@ for jj in range(len(targets)):
     time_stop = None
     cutout_size = 500
 
+
     current_position = []
     for band in lsst_bands:
             
@@ -104,6 +105,7 @@ for jj in range(len(targets)):
             band,
             ra,
             dec,
+            raw_dir=raw_dir,
             time_start=time_start,
             time_stop=time_stop,
             cutout_size=cutout_size,

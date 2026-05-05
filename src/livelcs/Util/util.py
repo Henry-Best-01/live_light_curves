@@ -104,6 +104,7 @@ def query_coords(
     band,
     ra,
     dec,
+    raw_dir=None,
     time_start=40587,
     time_stop=None,
     cutout_size=500,
@@ -113,6 +114,7 @@ def query_coords(
     from astropy.time import Time as astro_time
     from astropy.io import fits
     from lsst.daf.butler import Timespan
+    from os import isfile
     import lsst.geom as geom
     import astropy.units as u
     if time_stop is None:
@@ -181,19 +183,30 @@ def query_coords(
             if verbose:
                 print(f"current id = {visit_id}")
 
-       
-            
-            visit_image = butler.get(reference)
+            # only query if it's not in your raw directory
+            if not isfile(raw_dir+"LSST"+visit_id):
+                file_to_write = raw_dir+"LSST"+visit_id
 
-            if visit_image.containsSkyCoords(
-                ra * u.deg,
-                dec * u.deg,
-            ):
-                this_image = visit_image.getCutout(
-                    center = center_point,
-                    size = extent
-                )
-                output_cutouts.append(this_image)
+                visit_image = butler.get(reference)
+
+                if visit_image.containsSkyCoords(
+                    ra * u.deg,
+                    dec * u.deg,
+                ):
+                    this_image = visit_image.getCutout(
+                        center = center_point,
+                        size = extent
+                    )
+
+                    my_hdu = fits.PrimaryHDU(this_image)
+                    my_hdu.header['ra'] = ra
+                    my_hdu.header['dec'] = dec
+                    my_hdu.header['band'] = band
+                    my_hdu.header['obs_time'] = this_image.getMetadata()["DATE"]
+                    my_hdu.writeto(file_to_write)
+                    
+                    output_cutouts.append(this_image)
+                
 
         
     except:
@@ -216,13 +229,10 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
         current_line = None
         while current_line is not '':
             if current_line == 'raw_dirs:\n':
-                print("found this one!")
                 toggle_path_to_raw_data=True
             current_line = file.readline()
             if toggle_path_to_raw_data is True:
-                print(current_line)
                 raw_dir = current_line[4:-1]
-                print(raw_dir)
                 toggle_path_to_raw_data=False
             new_text += current_line
             if current_line == 'ROI:\n':
@@ -235,7 +245,7 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
     with open(new_config_file, 'w') as file:
         file.write(new_text)
 
-    return new_config_file
+    return new_config_file, raw_dir
 
         
 
