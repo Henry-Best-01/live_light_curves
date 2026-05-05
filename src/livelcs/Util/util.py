@@ -180,7 +180,8 @@ def query_coords(
             visit_image = butler.get(reference)
 
             if verbose:
-                print("got a visit image")
+                print(f"got a visit image at coordinates ra:{float(ra)}, dec:{float(dec)}")
+                
 
             # this check needs astropy units
             if visit_image.containsSkyCoords(
