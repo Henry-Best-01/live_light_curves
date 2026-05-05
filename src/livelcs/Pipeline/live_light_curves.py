@@ -93,7 +93,7 @@ for jj in range(len(targets)):
 
     ra = targets[jj]['ra']
     dec = targets[jj]['dec']
-    lsst_bands = ['z'] #list('ugrizy')
+    lsst_bands = ['u'] #list('ugrizy')
 
     time_start = None #40587
     time_stop = None
@@ -118,6 +118,7 @@ for jj in range(len(targets)):
     
 for item in all_data:
     print(len(item))
+    print(item)
 exit()
 
 

@@ -184,26 +184,16 @@ def query_coords(
             
             visit_image = butler.get(reference)
 
-            if verbose:
-                print(f"got a visit image at coordinates ra:{float(ra)}, dec:{float(dec)}")
-                print(ra * u.deg, dec * u.deg)
-            # this check needs astropy units
             if visit_image.containsSkyCoords(
                 ra * u.deg,
                 dec * u.deg,
             ):
-                if verbose:
-                    print("adding an image!")
-                    print(f"center = {center_point}, extend = {extent}")
                 this_image = visit_image.getCutout(
                     center = center_point,
                     size = extent
                 )
-                if verbose:
-                    print("found!")
                 output_cutouts.append(this_image)
-                if verbose:
-                    print("added!")
+
         
     except:
         # this catches the failures when no images overlap with the
