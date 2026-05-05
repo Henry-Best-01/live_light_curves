@@ -213,11 +213,13 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
         while current_line is not '':
             current_line = file.readline()
             new_text += current_line
+            if current_line == 'ROI:\n':
+                print("\n\n found it! \n\n")
 
     with open(original_path, 'r') as file:
-        print(file.read()[:500])
+        print(file.read()[1000:1500])
 
-    print(new_text[:500])
+    print(new_text[1000:1500])
             
 
 
