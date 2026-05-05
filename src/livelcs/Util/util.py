@@ -111,6 +111,7 @@ def query_coords(
 ):
     '''checks a given set of coordinates if there is a new visit image'''
     from astropy.time import Time as astro_time
+    from astropy.io import fits
     from lsst.daf.butler import Timespan
     import lsst.geom as geom
     import astropy.units as u
@@ -130,7 +131,7 @@ def query_coords(
 
     assert type(band) is str
 
-    # type cast values read from json or csv 
+    # typecast values read from json or csv 
     if type(ra) is str: ra = float(ra)
     if type(dec) is str: dec = float(dec)
 
@@ -179,6 +180,8 @@ def query_coords(
 
             if verbose:
                 print(f"current id = {visit_id}")
+
+            if 
             
             visit_image = butler.get(reference)
 
@@ -208,10 +211,17 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
 
     
     new_text = ''
+    toggle_path_to_raw_data = False
     with open(original_path, 'r') as file:        
         current_line = None
         while current_line is not '':
+            if current_line is 'raw_dirs:\n':
+                toggle_path_to_raw_data=True
             current_line = file.readline()
+            if toggle_path_to_raw_data==True:
+                raw_dir = current_line[4:-2]
+                print(raw_dir)
+                toggle_path_to_raw_data=False
             new_text += current_line
             if current_line == 'ROI:\n':
                 for target in targets:
