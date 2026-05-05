@@ -174,8 +174,6 @@ def query_coords(
         if verbose:
             print(f"{len(dataset_references)} images found")
 
-            print(len(dataset_references))
-
         for reference in dataset_references:
             visit_id = reference.dataId.get('visit')
 
