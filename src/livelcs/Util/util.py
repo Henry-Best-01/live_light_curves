@@ -203,10 +203,15 @@ def query_coords(
                     )
 
                     my_hdu = fits.PrimaryHDU(this_image)
+                    print("gets to flag 1")
                     my_hdu.header['ra'] = ra
+                    print("gets to flag 2")
                     my_hdu.header['dec'] = dec
+                    print("gets to flag 3")
                     my_hdu.header['band'] = band
+                    print("gets to flag 4")
                     my_hdu.header['obs_time'] = this_image.getMetadata()["DATE"]
+                    print("gets to flag 5")
                     my_hdu.writeto(file_to_write)
                     
                     output_cutouts.append(this_image)
