@@ -66,7 +66,7 @@ environ['LIGHTCURVER_CONFIG'] = this_config_file
 
 ### open up a tap service #######I think this is redundant
 # requires token to be stored on the machine
-#rsp_tap = open_tap_service()
+#rsp_tap = open_tap_service() 
 
 
 ### set up the butler, store your RSP token as envirionment variable "ACCESS_TOKEN" 
