@@ -172,6 +172,11 @@ def query_coords(
             print(len(dataset_references))
 
         for reference in dataset_references:
+            visit_id = reference.dataId.get('visit')
+
+            if verbose:
+                print(f"current id = {visit_id}")
+            
             visit_image = butler.get(reference)
 
             if verbose:
