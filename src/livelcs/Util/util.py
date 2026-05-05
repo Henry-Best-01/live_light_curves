@@ -61,7 +61,7 @@ def find_lsst_config(lsst_config_path=None):
     if config_path:
         return config_path
     else:
-        print("Error finding LSST configuration file. Please call 
+        print("Error finding LSST configuration file.")
 
 
 def open_tap_service(
