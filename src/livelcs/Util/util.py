@@ -210,7 +210,7 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
     new_file = ''
     with open(original_path, 'r') as file:
         all_lines = file.read()
-        current_line = None
+        current_line = 'null'
         while current_line is not '':
             current_line = file.readline()
             print(current_line)
