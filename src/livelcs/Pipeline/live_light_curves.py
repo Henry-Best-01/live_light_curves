@@ -85,7 +85,7 @@ butler = prepare_butler(butler_config, butler_collections)
 
 # this produces a list of visit images
 
-
+print(targets)
 ra = targets[0]['ra']
 dec = targets[0]['dec']
 lsst_bands = list('ugrizy')
