@@ -89,7 +89,7 @@ print(targets)
 
 all_data = []
 
-for jj in range(4):
+for jj in range(len(targets)):
 
     ra = targets[jj]['ra']
     dec = targets[jj]['dec']
@@ -110,7 +110,7 @@ for jj in range(4):
             time_start=time_start,
             time_stop=time_stop,
             cutout_size=cutout_size,
-            verbose=False
+            verbose=True
         )
 
         current_position.append(current_data)
