@@ -212,10 +212,10 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
         lines = file.read()
         print(lines)
 
-        for line in lines:
-            print(line)
-            if line == 'ROI:\n':
-                print("\n\nfound it!\n\n")
+#        for line in lines:
+#            print(line)
+#            if line == 'ROI:\n':
+#                print("\n\nfound it!\n\n")
                 
             
         
