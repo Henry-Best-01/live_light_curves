@@ -114,7 +114,7 @@ def query_coords(
     from astropy.time import Time as astro_time
     from astropy.io import fits
     from lsst.daf.butler import Timespan
-    import os.isfile
+    import os
     import lsst.geom as geom
     import astropy.units as u
     if time_stop is None:
