@@ -129,6 +129,10 @@ def query_coords(
 
     assert type(band) is str
 
+    # type cast values read from json or csv 
+    if type(ra) is str: ra = float(ra)
+    if type(dec) is str: dec = float(dec)
+
     if band not in list("ugrizy"):
         print("only lsst bands of 'u', 'g', 'r', 'i', 'z', 'y' are accepted now")
         return None
@@ -136,8 +140,8 @@ def query_coords(
     # These are required to make sure the coordinates are actually
     # in the visit image
     center_point = geom.SpherePoint(
-        float(ra) * geom.degrees,
-        float(dec) * geom.degrees
+        ra * geom.degrees,
+        dec * geom.degrees
     )
     extent = geom.Extent2I()
     extent.setX(cutout_size)
@@ -149,8 +153,8 @@ def query_coords(
             "visit.timespan OVERLAPS :timespan"
     bind_params = {
         "band": band,
-        "ra": float(ra),
-        "dec": float(dec),
+        "ra": ra,
+        "dec": dec,
         "timespan": timespan
     }
     if verbose:
@@ -181,11 +185,11 @@ def query_coords(
 
             if verbose:
                 print(f"got a visit image at coordinates ra:{float(ra)}, dec:{float(dec)}")
-                print(float(ra) * u.deg, float(dec) * u.deg)
+                print(ra * u.deg, dec * u.deg)
             # this check needs astropy units
             if visit_image.containsSkyCoords(
-                float(ra) * u.deg,
-                float(dec) * u.deg,
+                ra * u.deg,
+                dec * u.deg,
             ):
                 if verbose:
                     print("adding an image!")
