@@ -219,10 +219,9 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
                     new_text += f'    coordinates: [{target["ra"]}, {target["dec"]}]\n'
 
 
-    with open(original_path, 'r') as file:
-        print(file.read()[2000:3000])
-
-    print(new_text[2000:3000])
+    with open(original_path[:-5]+extension+original_path[-5:], 'w') as file:
+        file.write(new_text)
+        
             
 
 
