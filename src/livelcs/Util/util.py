@@ -201,10 +201,12 @@ def query_coords(
                         center = center_point,
                         size = extent
                     )
+                    print("prepares image")
 
                     my_hdu = fits.PrimaryHDU(
                         data=np.asarray(this_image.image.array)
                     )
+                    print("makes fits object")
                     my_hdu.header['ra'] = ra
                     my_hdu.header['dec'] = dec
                     my_hdu.header['band'] = band
