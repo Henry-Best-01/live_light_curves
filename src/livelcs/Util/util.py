@@ -209,9 +209,12 @@ def query_coords(
                     my_hdu.header['dec'] = dec
                     my_hdu.header['band'] = band
                     my_hdu.header['obs_time'] = this_image.getMetadata()["DATE"]
+                    print("so far so good")
                     my_hdu.writeto(file_to_write)
+                    print("can write files")
                     
-                    output_cutouts.append(this_image)
+                    output_cutouts.append(this_image.image.array)
+                    print("appends image")
                 
 
         
