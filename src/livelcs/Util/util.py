@@ -30,7 +30,9 @@ def parse_arguments(all_arguments=None):
         current_targets = []
         with open(list_of_targets, 'r') as f:
             my_reader = csv.DictReader(f)
+            
             for row in my_reader:
+                print(row['ra'], row['dec'])
                 current_targets.append(row)
     else:
         print("list of objects not recognized. please provide a valid json or csv.")
