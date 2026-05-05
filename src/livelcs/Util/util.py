@@ -221,7 +221,7 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
             current_line = file.readline()
             if toggle_path_to_raw_data is True:
                 print(current_line)
-                raw_dir = current_line[4:-2]
+                raw_dir = current_line[4:-1]
                 print(raw_dir)
                 toggle_path_to_raw_data=False
             new_text += current_line
