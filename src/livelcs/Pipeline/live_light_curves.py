@@ -110,8 +110,8 @@ for band in lsst_bands:
 
     all_data.append(current_data)
     
-
-print(len(all_data))
+for item in all_data:
+    print(item)
 exit()
 
 
