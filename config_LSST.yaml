@@ -51,8 +51,6 @@ multiprocessing_cpu_count: 1
 # the ROI will be extracted, and have flux calibrated cutouts prepared.
 # please keep the formatting the same.
 ROI:
-  Euclid_lens: 
-    coordinates: [59.496380, -48.494726]  # [ra, dec] in degrees
 ROI_size: 3.5  # in arcseconds, will not consider reference stars this close
 # the ROI also will be used as a position starting point for the plate solving.
 # frames that do not contain it (determined after plate solving) will not undergo further processing.
