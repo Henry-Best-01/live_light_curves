@@ -111,6 +111,7 @@ def query_coords(
 ):
     '''checks a given set of coordinates if there is a new visit image'''
     from astropy.time import Time as astro_time
+    from lsst.daf.butler import Timespan
     if time_stop is None:
         time_stop = astro_time.now()
     elif type(time_stop) is int:
