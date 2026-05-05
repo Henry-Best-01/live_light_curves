@@ -41,8 +41,9 @@ def parse_arguments(all_arguments=None):
 def find_lsst_config(lsst_config_path=None):
     '''tests a few likely paths for the LSST configuration file'''
     from os import path
-    if path.isfile(lsst_config_path):
-        return lsst_config_path
+    lsst_config_path is not None:
+        if path.isfile(lsst_config_path):
+            return lsst_config_path
     test_path = path.expanduser(
             "~/live_light_curves/config_LSST.yaml"
         )
