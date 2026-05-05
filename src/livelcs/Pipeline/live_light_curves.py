@@ -91,7 +91,7 @@ dec = targets[0]['dec']
 lsst_bands = list('ugrizy')
 
 time_start = 60587 #40587
-time_stop = astro_time.now()
+time_stop = None
 cutout_size = 500
 
 all_data = []
