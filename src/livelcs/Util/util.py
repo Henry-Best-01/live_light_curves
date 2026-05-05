@@ -30,10 +30,16 @@ def parse_arguments(all_arguments=None):
         current_targets = []
         with open(list_of_targets, 'r') as f:
             my_reader = csv.DictReader(f)
+            mini_dict = {}
+            for jj, row in enumerate(my_reader):
+                if jj == 0:
+                    keys = row[None]
+                    continue
+                for kk, key in enumerate(keys):
+                    mini_dict[key] = row[None][kk]
+                current_targets.append(mini_dict)
+                mini_dict = {}
             
-            for row in my_reader:
-                print(row)
-                current_targets.append(row)
     else:
         print("list of objects not recognized. please provide a valid json or csv.")
         print("these can be generated using the 'SLED_lenses.py' script provided")
