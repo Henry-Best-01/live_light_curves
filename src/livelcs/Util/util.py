@@ -149,8 +149,8 @@ def query_coords(
             "visit.timespan OVERLAPS :timespan"
     bind_params = {
         "band": band,
-        "ra": ra,
-        "dec": dec,
+        "ra": float(ra),
+        "dec": float(dec),
         "timespan": timespan
     }
     if verbose:
