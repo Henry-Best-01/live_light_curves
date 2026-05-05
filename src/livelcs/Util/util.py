@@ -200,9 +200,9 @@ def query_coords(
                     this_image = visit_image.getCutout(
                         center = center_point,
                         size = extent
-                    )
+                    ).image.array
 
-                    my_hdu = fits.PrimaryHDU(this_image)
+                    my_hdu = fits.PrimaryHDU(data=this_image)
                     print("gets to flag 1")
                     my_hdu.header['ra'] = ra
                     print("gets to flag 2")
