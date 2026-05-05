@@ -90,7 +90,7 @@ ra = targets[0]['ra']
 dec = targets[0]['dec']
 lsst_bands = list('ugrizy')
 
-time_start = 60587 #40587
+time_start = 40587
 time_stop = None
 cutout_size = 500
 
