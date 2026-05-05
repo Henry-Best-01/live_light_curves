@@ -198,7 +198,11 @@ def query_coords(
                     center = point,
                     size = extent
                 )
+                if verbose:
+                    print("found!")
                 output_cutouts.append(this_image)
+                if verbose:
+                    print("added!")
         
     except:
         # this catches the failures when no images overlap with the
