@@ -59,7 +59,7 @@ targets, other_args = parse_arguments(all_arguments)
 
 ### make temporary configuration file to place ROI at current objects
 
-make_temp_yaml_with_new_roi(targets, known_config_path)
+make_temp_yaml_with_new_roi(targets, config_path)
 
 
 exit()
