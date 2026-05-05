@@ -212,7 +212,7 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
         current_line = None
         while current_line is not '':
             current_line = file.readline()
-            new_text.append(current_line)
+            new_text += current_line
 
     with open(original_path, 'r') as file:
         print(file.read()[:50])
