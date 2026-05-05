@@ -166,6 +166,8 @@ def query_coords(
             where=query,
             bind=bind_params
         )
+        if verbose:
+            print(f"{len(dataset_references)} images found")
 
         for reference in dataset_references:
             visit_image = butler.get(reference)
