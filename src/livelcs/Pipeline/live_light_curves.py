@@ -43,9 +43,11 @@ from os import path
 # Note that it must be named "config_LSST.yaml"
 known_config_path = None 
 config_path = find_lsst_config(known_config_path)
-environ['LIGHTCURVER_CONFIG'] = config_path
-get_user_config()
 
+
+# butler configuration
+butler_config = "dp1"
+butler_collections = "LSSTComCam/DP1"
 
 
 
@@ -58,27 +60,16 @@ targets, other_args = parse_arguments(all_arguments)
 
 
 ### make temporary configuration file to place ROI at current objects
-
-make_temp_yaml_with_new_roi(targets, config_path)
-
-
-exit()
+this_config_file = make_temp_yaml_with_new_roi(targets, config_path)
+environ['LIGHTCURVER_CONFIG'] = this_config_file
 
 
-
-
-### open up a tap service
+### open up a tap service #######I think this is redundant
 # requires token to be stored on the machine
-
-rsp_tap = open_tap_service()
-
-
+#rsp_tap = open_tap_service()
 
 
 ### set up the butler, store your RSP token as envirionment variable "ACCESS_TOKEN" 
-butler_config = "dp1"
-butler_collections = "LSSTComCam/DP1"
-
 butler = prepare_butler(butler_config, butler_collections)
 
 
@@ -93,9 +84,6 @@ butler = prepare_butler(butler_config, butler_collections)
 
 
 # this produces a list of visit images
-
-print(targets)
-
 all_data = []
 
 for jj in range(len(targets)):
@@ -124,6 +112,7 @@ for jj in range(len(targets)):
 
         current_position.append(current_data)
     all_data.append(current_position)
+
     
 for item in all_data:
     print(item)

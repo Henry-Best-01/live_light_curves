@@ -218,22 +218,12 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
                     new_text += f'  {target["name"]}:\n'
                     new_text += f'    coordinates: [{target["ra"]}, {target["dec"]}]\n'
 
+    new_config_file = original_path[:-5]+extension+original_path[-5:]
 
-    with open(original_path[:-5]+extension+original_path[-5:], 'w') as file:
+    with open(new_config_file, 'w') as file:
         file.write(new_text)
-        
-            
 
-
-#        for line in lines:
-#            print(line)
-#            if line == 'ROI:\n':
-#                print("\n\nfound it!\n\n")
-                
-            
-        
-
-    
+    return new_config_file
 
         
 
