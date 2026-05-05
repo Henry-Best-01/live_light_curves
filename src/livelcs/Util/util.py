@@ -169,14 +169,21 @@ def query_coords(
         if verbose:
             print(f"{len(dataset_references)} images found")
 
+            print(len(dataset_references))
+
         for reference in dataset_references:
             visit_image = butler.get(reference)
+
+            if verbose:
+                print("got a visit image")
 
             # this check needs astropy units
             if visit_image.containsSkyCoords(
                 float(ra) * u.deg,
                 float(dec) * u.deg,
             ):
+                if verbose:
+                    print("adding an image!")
                 this_image = visit_image.getCutout(
                     center = point,
                     size = extent
