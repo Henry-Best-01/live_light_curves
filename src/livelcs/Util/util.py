@@ -117,6 +117,7 @@ def query_coords(
     from os import path
     import lsst.geom as geom
     import astropy.units as u
+    from numpy import asarray
     if time_stop is None:
         time_stop = astro_time.now()
     elif type(time_stop) is int:
@@ -204,7 +205,7 @@ def query_coords(
                     print("prepares image")
 
                     my_hdu = fits.PrimaryHDU(
-                        data=np.asarray(this_image.image.array)
+                        data=asarray(this_image.image.array)
                     )
                     print("makes fits object")
                     my_hdu.header['ra'] = ra
