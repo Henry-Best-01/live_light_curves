@@ -215,8 +215,8 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
             new_text += current_line
             if current_line == 'ROI:\n':
                 for target in targets:
-                    current_line += f'  {target["name"]}:\n'
-                    current_line += f'    coordinates: [{target["ra"]}, {target["dec"]}]\n'
+                    new_text += f'  {target["name"]}:\n'
+                    new_text += f'    coordinates: [{target["ra"]}, {target["dec"]}]\n'
 
 
     with open(original_path, 'r') as file:
