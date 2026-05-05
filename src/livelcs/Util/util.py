@@ -181,7 +181,7 @@ def query_coords(
             if verbose:
                 print(f"current id = {visit_id}")
 
-            if 
+       
             
             visit_image = butler.get(reference)
 
