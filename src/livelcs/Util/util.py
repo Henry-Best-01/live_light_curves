@@ -194,9 +194,9 @@ def query_coords(
             ):
                 if verbose:
                     print("adding an image!")
-                    print(f"center = {point}, extend = {extent}")
+                    print(f"center = {center_point}, extend = {extent}")
                 this_image = visit_image.getCutout(
-                    center = point,
+                    center = center_point,
                     size = extent
                 )
                 if verbose:
