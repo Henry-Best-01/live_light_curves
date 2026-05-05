@@ -142,6 +142,9 @@ def query_coords(
     extent = geom.Extent2I()
     extent.setX(cutout_size)
     extent.setY(cutout_size)
+    if verbose:
+        print(extent)
+        print(center_point)
 
     # main query
     query = "band.name = :band AND " \
