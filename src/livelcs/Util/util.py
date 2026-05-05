@@ -208,6 +208,7 @@ def query_coords(
                     my_hdu.header['ra'] = ra
                     my_hdu.header['dec'] = dec
                     my_hdu.header['band'] = band
+                    print("gets to band")
                     my_hdu.header['obs_time'] = this_image.getMetadata()["DATE"]
                     print("so far so good")
                     my_hdu.writeto(file_to_write)
