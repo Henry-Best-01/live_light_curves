@@ -110,6 +110,7 @@ def query_coords(
     verbose=False
 ):
     '''checks a given set of coordinates if there is a new visit image'''
+    from astropy.time import Time as astro_time
     if time_stop is None:
         time_stop = astro_time.now()
     elif type(time_stop) is int:
