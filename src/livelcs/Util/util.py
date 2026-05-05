@@ -136,8 +136,8 @@ def query_coords(
     # These are required to make sure the coordinates are actually
     # in the visit image
     center_point = geom.SpherePoint(
-        ra * geom.degrees,
-        dec * geom.degrees
+        float(ra) * geom.degrees,
+        float(dec) * geom.degrees
     )
     extent = geom.Extent2I()
     extent.setX(cutout_size)
