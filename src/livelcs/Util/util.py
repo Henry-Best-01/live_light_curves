@@ -215,9 +215,9 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
             new_text += current_line
 
     with open(original_path, 'r') as file:
-        print(file.read()[:50])
+        print(file.read()[:500])
 
-    print(new_text[:50])
+    print(new_text[:500])
             
 
 
