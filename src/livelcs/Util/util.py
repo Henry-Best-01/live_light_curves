@@ -216,9 +216,11 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
         current_line = None
         while current_line is not '':
             if current_line is 'raw_dirs:\n':
+                print("found this one!")
                 toggle_path_to_raw_data=True
             current_line = file.readline()
-            if toggle_path_to_raw_data==True:
+            if toggle_path_to_raw_data is True:
+                print(current_line)
                 raw_dir = current_line[4:-2]
                 print(raw_dir)
                 toggle_path_to_raw_data=False
