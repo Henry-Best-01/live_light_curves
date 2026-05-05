@@ -182,6 +182,9 @@ def query_coords(
         for reference in dataset_references:
             visit_id = reference.dataId.get('visit')
 
+            print(raw_dir+"LSST"+visit_id+".fits")
+            print(os.isfile(raw_dir+"LSST"+visit_id+".fits"))
+
             if verbose:
                 print(f"current id = {visit_id}")
 
