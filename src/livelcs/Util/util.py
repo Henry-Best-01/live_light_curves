@@ -142,9 +142,6 @@ def query_coords(
     extent = geom.Extent2I()
     extent.setX(cutout_size)
     extent.setY(cutout_size)
-    if verbose:
-        print(extent)
-        print(center_point)
 
     # main query
     query = "band.name = :band AND " \
@@ -184,7 +181,8 @@ def query_coords(
 
             if verbose:
                 print(f"got a visit image at coordinates ra:{float(ra)}, dec:{float(dec)}")
-                
+
+            print(visit_image)
 
             # this check needs astropy units
             if visit_image.containsSkyCoords(
