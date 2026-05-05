@@ -207,10 +207,14 @@ def make_temp_yaml_with_new_roi(targets, original_path, extension="_tmp"):
     input as the parameter ROI for each object"""
 
     
-    new_lines = []
+    new_file = ''
     with open(original_path, 'r') as file:
-        lines = file.read()
-        print(lines)
+        all_lines = file.read()
+        current_line = None
+        while current_line is not '':
+            current_line = file.readline()
+            print(current_line)
+
 
 #        for line in lines:
 #            print(line)
