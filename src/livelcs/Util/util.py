@@ -203,6 +203,7 @@ def query_coords(
                         size = extent
                     )
                     print("prepares image")
+                    image_metadata = this_image.getMetadata()
 
                     my_hdu = fits.PrimaryHDU(
                         data=asarray(this_image.image.array)
@@ -211,6 +212,9 @@ def query_coords(
                     my_hdu.header['ra'] = ra
                     my_hdu.header['dec'] = dec
                     my_hdu.header['band'] = band
+                    my_hdu.header['OBSTART'] = image_metadata['DATE-BEG']
+                    my_hdu.header['GAIN'] = image_metadata['CCDGAIN']
+                    my_hdu.header['EXPTIME'] = image_metadata['SHUTTIME']
                     print("gets to band")
                     my_hdu.header['obs_time'] = this_image.getMetadata()["DATE"]
                     print("so far so good")
