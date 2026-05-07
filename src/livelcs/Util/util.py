@@ -107,7 +107,7 @@ def query_coords(
     raw_dir=None,
     time_start=40587,
     time_stop=None,
-    cutout_size=500,
+    cutout_size=1500,
     verbose=False
 ):
     '''checks a given set of coordinates if there is a new visit image'''
